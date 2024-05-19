@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import dto.UserDto;
+
 @Entity
 @Table(name = "user")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -44,6 +46,12 @@ public class User {
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.userPassword = userPassword;
+	}
+	
+	public User(UserDto userDto) {
+		this.userName = userDto.getUserName();
+		this.userEmail = userDto.getUserEmail();
+		this.userPassword = userDto.getUserPassword();
 	}
 
 	public Long getId() {

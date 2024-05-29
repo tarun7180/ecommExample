@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Register() {
 
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [userEmail, setUserEmail] = useState("");
+    const history = useNavigate();
 
     async function userRegistration() {
         let userDetails = {userName, userPassword, userEmail}
@@ -18,9 +20,10 @@ function Register() {
             },
             body:JSON.stringify(userDetails)
         });
-        apiResponse = await apiResponse;
-        console.log("api response:",apiResponse)
+        apiResponse = await apiResponse.json();
+        console.log("apiResponse:",apiResponse);
         localStorage.setItem("user-info",JSON.stringify(apiResponse))
+        history("/add")
     }
 
     return (

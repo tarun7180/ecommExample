@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "./Header";
 
 function Users() {
   const [data, setData] = useState([]);
@@ -24,27 +25,30 @@ function Users() {
 
   return (
     <div>
-      <h1> Users List</h1>
-      <table class="table table-striped table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">User Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-            {data.map((item) => (
-              <tr>
-                <td>{item.userName}</td>
-                <td>{item.userEmail}</td>
-                <td>{item.userPassword}</td>
-              </tr>
-            ))}
-          
-        </tbody>
-      </table>
+      <Header />
+      <div>
+        <h1> Users List</h1>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              {data.map((item) => (
+                <tr>
+                  <td>{item.userName}</td>
+                  <td>{item.userEmail}</td>
+                  <td>{item.userPassword}</td>
+                </tr>
+              ))}
+            
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

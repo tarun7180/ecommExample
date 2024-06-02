@@ -7,18 +7,18 @@ import UpdateProduct from "./UpdateProduct";
 import Login from "./Login";
 import Register from "./Register"
 import Users from "./Users";
+import Protected from "./Protected";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
         <Routes>
-        <Route path="/add" element={<AddProduct />} />
-        <Route path="/update" element={<UpdateProduct />} />
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/users" element={<Users />}/>
+          <Route path="/add" element={<Protected Cmp={AddProduct} />} />
+          <Route path="/update" element={<Protected Cmp={UpdateProduct} />} />
+          <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register />}/>
+          <Route path="/users" element={<Users />}/>
         </Routes>
       </BrowserRouter>
     </div>

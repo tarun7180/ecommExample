@@ -1,7 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
+import Header from './Header';
 
 function Register() {
+
+    useEffect(() => {
+        if(localStorage.getItem('user-info')) {
+            history("./add")
+        }
+    },[]
+    )
 
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("");
@@ -27,6 +35,9 @@ function Register() {
     }
 
     return (
+
+       <div>
+        <Header/>
         <div className='col-sm-6 offset-sm-3'>
             <h1>User Sign Up</h1>
             <input type="text" placeholder="User Name" className='form-control' 
@@ -40,6 +51,7 @@ function Register() {
             <br />
             <button onClick={userRegistration} className='btn btn-primary'>Sign Up</button>
         </div>
+       </div>
     )
 }
 
